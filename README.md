@@ -1,0 +1,1 @@
+Using Celery to send emails and execute tasks asynchronously.
