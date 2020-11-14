@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from .celery_conf import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '4^w4*9)%8%w@j6_wu66@uq#w-53%ex1k!t5@bc@7%869wfq56t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -119,3 +120,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+''' Have configured email settings below '''
+from .email_conf import *
+
+''' these are those email conf. You can change the Host_user and User_password '''
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'your_account@gmail.com'
+# EMAIL_HOST_PASSWORD = 'your_account_password'
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
+
+''' these are the conf for celery (have changed the Broker_URL for security purpose)'''
+# CELERY_BROKER_URL = 'redis://h:p91db15ae86e45fe1c171d041d1211decdb487@ec2-54-84-207-7.compute-1.amazonaws.com:16139'
+# CELERY_ACCEPT_CONTENT = ['json']
+# CELERY_TASK_SERIALIZER = 'json'
+
+
+
